@@ -1,0 +1,130 @@
+services:
+  grafana:
+    container_name: grafana
+    image: grafana/grafana:12.3
+    restart: unless-stopped
+    network_mode: host
+    environment:
+      GF_AUTH_ANONYMOUS_ENABLED: "true"
+      GF_AUTH_ANONYMOUS_ORG_ROLE: Admin
+      GF_PATHS_PROVISIONING: /etc/grafana/provisioning
+      GF_SERVER_HTTP_PORT: 3005
+    volumes:
+      - grafana_storage:/var/lib/grafana
+      - ./provisioning:/etc/grafana/provisioning
+
+  loki:
+    container_name: loki
+    image: grafana/loki:3.6
+    user: "0"
+    command: -config.file=/etc/loki/local-config.yaml
+    network_mode: host
+    volumes:
+      - ./loki-config.yaml:/etc/loki/local-config.yaml:ro
+      - loki_data:/var/loki
+    restart: unless-stopped
+
+  promtail:
+    container_name: promtail
+    image: grafana/promtail:3.6
+    command: -config.file=/etc/promtail/config.yaml
+    network_mode: host
+    volumes:
+      - ./promtail-config.yaml:/etc/promtail/config.yaml:ro
+      - /var/log:/var/log
+    depends_on:
+      - loki
+    restart: unless-stopped
+
+  prometheus:
+    container_name: prometheus
+    image: prom/prometheus:v3.5.1
+    network_mode: host
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    restart: unless-stopped
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  node-exporter:
+    container_name: node-exporter
+    image: prom/node-exporter:v1.9.1
+    network_mode: host
+    restart: unless-stopped
+
+  tempo:
+    container_name: tempo
+    image: grafana/tempo:2.10.0
+    network_mode: host
+    volumes:
+      - ./tempo-config.yaml:/etc/tempo.yaml
+      - tempo_data:/var/tempo
+    command: ["-config.file=/etc/tempo.yaml", "-log.level=debug"]
+    restart: unless-stopped
+
+  mimir:
+    container_name: mimir
+    image: grafana/mimir:2.17.5
+    command: ["-config.file=/etc/mimir.yaml", "-server.grpc-listen-port=9098", "-memberlist.bind-port=7947"]
+    network_mode: host
+    volumes:
+      - ./mimir-config.yaml:/etc/mimir.yaml
+    restart: unless-stopped
+
+  pyroscope:
+    container_name: pyroscope
+    image: grafana/pyroscope:1.18.0
+    network_mode: host
+    command: ["-server.grpc-listen-port=4041", "-memberlist.bind-port=7948"]
+    restart: unless-stopped
+
+  beyla:
+    container_name: beyla
+    image: grafana/beyla:2.8.5
+    privileged: true
+    init: true
+    network_mode: host
+    pid: host
+    environment:
+      BEYLA_EXECUTABLE_NAME: "grafana"
+      BEYLA_PROMETHEUS_PORT: "8999"
+      OTEL_EXPORTER_OTLP_ENDPOINT: "http://localhost:4318"
+      OTEL_EXPORTER_OTLP_PROTOCOL: "http/protobuf"
+      BEYLA_TRACE_PRINTER: "text"
+      BEYLA_PRINT_TRACES: "true"
+      BEYLA_NETWORK_METRICS: "true"
+      BEYLA_LOG_LEVEL: "DEBUG"
+      BEYLA_PROFILING_REPORTING_ENABLED: "true"
+      BEYLA_PROFILING_REPORTING_ENDPOINT: "http://localhost:4040"
+      BEYLA_SERVICE_NAME: "system_auto_trace"
+    restart: unless-stopped
+
+  otel-collector:
+    image: otel/opentelemetry-collector-contrib:0.145.0
+    container_name: otel-collector
+    command: ["--config=/etc/otel-collector-config.yaml"]
+    network_mode: host
+    volumes:
+      - ./otel-config.yaml:/etc/otel-collector-config.yaml
+    restart: unless-stopped
+    depends_on:
+      - loki
+      - mimir
+      - tempo
+
+  k6:
+    container_name: k6
+    image: grafana/k6:0.57.0
+    command: ["run", "--help"]
+    restart: "no"
+    networks:
+      - grafana-network
+
+volumes:
+  grafana_storage:
+  loki_data:
+  tempo_data:
+
+networks:
+  grafana-network:
+    external: true

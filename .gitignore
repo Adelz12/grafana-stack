@@ -1,0 +1,12 @@
+# Data Volumes
+*_data/
+grafana_storage/
+data/
+
+# OS/IDE
+.DS_Store
+.vscode/
+
+# Temporary files
+*.log
+tmp/

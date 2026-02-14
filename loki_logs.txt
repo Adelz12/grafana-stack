@@ -1,0 +1,259 @@
+level=info ts=2026-02-05T07:49:21.715162694Z caller=main.go:127 msg="Starting Loki" version="(version=3.6.4, branch=release-3.6.x, revision=d8052669)"
+level=info ts=2026-02-05T07:49:21.715193664Z caller=main.go:128 msg="Loading configuration file" filename=/etc/loki/local-config.yaml
+level=info ts=2026-02-05T07:49:21.715275973Z caller=modules.go:1382 msg="Ruler storage is not configured; ruler will not be started." config_key=ruler.storage
+level=info ts=2026-02-05T07:49:21.716418299Z caller=server.go:386 msg="server listening on addresses" http=[::]:3100 grpc=[::]:9096
+level=info ts=2026-02-05T07:49:21.719545296Z caller=table_manager.go:300 index-store=boltdb-shipper-2020-10-24 msg="query readiness setup completed" duration=1.26µs distinct_users_len=0 distinct_users=
+level=info ts=2026-02-05T07:49:21.719443951Z caller=table_manager.go:136 index-store=boltdb-shipper-2020-10-24 msg="uploading tables"
+level=info ts=2026-02-05T07:49:21.719878332Z caller=shipper.go:165 index-store=boltdb-shipper-2020-10-24 msg="starting index shipper in RW mode"
+level=info ts=2026-02-05T07:49:21.720012935Z caller=index_client.go:91 index-store=boltdb-shipper-2020-10-24 msg="starting boltdb shipper in RW mode"
+level=info ts=2026-02-05T07:49:21.720078632Z caller=table_manager.go:187 index-store=boltdb-shipper-2020-10-24 msg="handing over indexes to shipper"
+level=info ts=2026-02-05T07:49:21.721702389Z caller=worker.go:134 component=querier msg="Starting querier worker using query-scheduler and scheduler ring for addresses"
+level=warn ts=2026-02-05T07:49:21.723511691Z caller=modules.go:742 msg="The config setting shutdown marker path is not set. The /ingester/prepare_shutdown endpoint won't work"
+level=warn ts=2026-02-05T07:49:21.725890194Z caller=modules.go:1428 msg="RulerStorage is nil. Not starting the ruler."
+level=info ts=2026-02-05T07:49:21.740357629Z caller=module_service.go:82 msg=starting module=server
+level=info ts=2026-02-05T07:49:21.740358985Z caller=module_service.go:82 msg=starting module=cache-generation-loader
+level=info ts=2026-02-05T07:49:21.740418889Z caller=module_service.go:82 msg=starting module=query-frontend-tripperware
+level=info ts=2026-02-05T07:49:21.740425888Z caller=module_service.go:82 msg=starting module=memberlist-kv
+level=info ts=2026-02-05T07:49:21.740455993Z caller=module_service.go:82 msg=starting module=store
+level=info ts=2026-02-05T07:49:21.740456405Z caller=module_service.go:82 msg=starting module=ring
+level=info ts=2026-02-05T07:49:21.740488639Z caller=module_service.go:82 msg=starting module=query-scheduler-ring
+level=info ts=2026-02-05T07:49:21.740567284Z caller=ring.go:365 msg="ring doesn't exist in KV store yet"
+level=info ts=2026-02-05T07:49:21.74057086Z caller=ring.go:365 msg="ring doesn't exist in KV store yet"
+level=info ts=2026-02-05T07:49:21.740739479Z caller=module_service.go:82 msg=starting module=analytics
+level=info ts=2026-02-05T07:49:21.74077365Z caller=module_service.go:82 msg=starting module=ingester-querier
+level=info ts=2026-02-05T07:49:21.740557457Z caller=basic_lifecycler.go:321 msg="instance not found in the ring" instance=414a47d1880a ring=scheduler
+level=info ts=2026-02-05T07:49:21.740783966Z caller=basic_lifecycler_delegates.go:63 msg="not loading tokens from file, tokens file path is empty"
+level=info ts=2026-02-05T07:49:21.74084879Z caller=module_service.go:82 msg=starting module=rule-evaluator
+level=info ts=2026-02-05T07:49:21.740862102Z caller=module_service.go:82 msg=starting module=distributor
+level=info ts=2026-02-05T07:49:21.740864934Z caller=ringmanager.go:186 msg="waiting until scheduler is JOINING in the ring"
+level=info ts=2026-02-05T07:49:21.740871579Z caller=module_service.go:82 msg=starting module=compactor
+level=info ts=2026-02-05T07:49:21.740883255Z caller=module_service.go:82 msg=starting module=ingester
+level=info ts=2026-02-05T07:49:21.740902011Z caller=ring.go:365 component=distributor msg="ring doesn't exist in KV store yet"
+level=error ts=2026-02-05T07:49:21.740900789Z caller=ratestore.go:110 msg="error getting ingester clients" err="empty ring"
+level=info ts=2026-02-05T07:49:21.740926833Z caller=ring.go:365 msg="ring doesn't exist in KV store yet"
+level=info ts=2026-02-05T07:49:21.740949922Z caller=basic_lifecycler.go:321 msg="instance not found in the ring" instance=414a47d1880a ring=compactor
+level=info ts=2026-02-05T07:49:21.740953822Z caller=ingester.go:565 component=ingester msg="recovering from checkpoint"
+level=info ts=2026-02-05T07:49:21.740957816Z caller=basic_lifecycler_delegates.go:63 msg="not loading tokens from file, tokens file path is empty"
+level=info ts=2026-02-05T07:49:21.740966479Z caller=basic_lifecycler.go:321 component=distributor msg="instance not found in the ring" instance=414a47d1880a ring=distributor
+level=info ts=2026-02-05T07:49:21.741002738Z caller=recovery.go:42 component=ingester msg="no checkpoint found, treating as no-op"
+level=info ts=2026-02-05T07:49:21.741037184Z caller=compactor.go:383 msg="waiting until compactor is JOINING in the ring"
+level=info ts=2026-02-05T07:49:21.741077027Z caller=ingester.go:581 component=ingester msg="recovered WAL checkpoint recovery finished" elapsed=134.398µs errors=false
+level=info ts=2026-02-05T07:49:21.741098501Z caller=ingester.go:587 component=ingester msg="recovering from WAL"
+level=info ts=2026-02-05T07:49:21.741287797Z caller=ingester.go:603 component=ingester msg="WAL segment recovery finished" elapsed=341.381µs errors=false
+level=info ts=2026-02-05T07:49:21.741297739Z caller=ingester.go:551 component=ingester msg="closing recoverer"
+level=info ts=2026-02-05T07:49:21.741520625Z caller=ingester.go:559 component=ingester msg="WAL recovery finished" time=577.845µs
+level=info ts=2026-02-05T07:49:21.741530653Z caller=wal.go:158 msg=started component=wal
+level=info ts=2026-02-05T07:49:21.7415917Z caller=lifecycler.go:687 component=ingester msg="not loading tokens from file, tokens file path is empty"
+level=info ts=2026-02-05T07:49:21.741610506Z caller=ingester.go:772 component=ingester msg="sleeping for initial delay before starting periodic flushing" delay=9.164243164s
+level=info ts=2026-02-05T07:49:21.74162893Z caller=lifecycler.go:714 component=ingester msg="instance not found in ring, adding with no tokens" ring=ingester
+level=info ts=2026-02-05T07:49:21.741679974Z caller=lifecycler.go:556 component=ingester msg="auto-joining cluster after timeout" ring=ingester
+level=info ts=2026-02-05T07:49:21.865779807Z caller=ringmanager.go:190 msg="scheduler is JOINING in the ring"
+level=info ts=2026-02-05T07:49:21.865854639Z caller=ringmanager.go:199 msg="waiting until scheduler is ACTIVE in the ring"
+level=info ts=2026-02-05T07:49:21.905913222Z caller=compactor.go:387 msg="compactor is JOINING in the ring"
+level=info ts=2026-02-05T07:49:21.906003591Z caller=compactor.go:397 msg="waiting until compactor is ACTIVE in the ring"
+level=info ts=2026-02-05T07:49:22.04207715Z caller=ringmanager.go:203 msg="scheduler is ACTIVE in the ring"
+level=info ts=2026-02-05T07:49:22.042116223Z caller=module_service.go:82 msg=starting module=query-scheduler
+level=info ts=2026-02-05T07:49:22.042178603Z caller=module_service.go:82 msg=starting module=querier
+level=info ts=2026-02-05T07:49:22.042183904Z caller=module_service.go:82 msg=starting module=query-frontend
+level=info ts=2026-02-05T07:49:22.048216639Z caller=compactor.go:401 msg="compactor is ACTIVE in the ring"
+level=info ts=2026-02-05T07:49:22.048237698Z caller=loki.go:599 msg="Loki started" startup_time=419.082432ms
+level=info ts=2026-02-05T07:49:25.042643233Z caller=scheduler.go:652 msg="this scheduler is in the ReplicationSet, will now accept requests."
+level=info ts=2026-02-05T07:49:25.04269814Z caller=worker.go:235 component=querier msg="adding connection" addr=127.0.0.1:9096
+level=info ts=2026-02-05T07:49:27.048884209Z caller=compactor.go:460 msg="this instance has been chosen to run the compactor, starting compactor"
+level=info ts=2026-02-05T07:49:27.048934447Z caller=tables_manager.go:70 msg="waiting 10m0s for ring to stay stable and previous compactions to finish before starting compactor"
+level=info ts=2026-02-05T07:49:32.042627521Z caller=frontend_scheduler_worker.go:106 msg="adding connection to scheduler" addr=127.0.0.1:9096
+level=info ts=2026-02-05T07:49:51.741716424Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
+level=info ts=2026-02-05T07:49:51.741728186Z caller=recalculate_owned_streams.go:63 msg="detected ring changes, re-evaluating streams ownership"
+level=info ts=2026-02-05T07:49:51.741732362Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
+level=info ts=2026-02-05T07:50:21.72032216Z caller=table_manager.go:136 index-store=boltdb-shipper-2020-10-24 msg="uploading tables"
+level=info ts=2026-02-05T07:50:21.720367103Z caller=table_manager.go:187 index-store=boltdb-shipper-2020-10-24 msg="handing over indexes to shipper"
+level=info ts=2026-02-05T07:50:21.741769341Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
+level=info ts=2026-02-05T07:50:21.741791041Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
+level=info ts=2026-02-05T07:50:51.742607613Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
+level=info ts=2026-02-05T07:50:51.742640953Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
+level=info ts=2026-02-05T07:51:21.720403328Z caller=table_manager.go:136 index-store=boltdb-shipper-2020-10-24 msg="uploading tables"
+level=info ts=2026-02-05T07:51:21.720413578Z caller=table_manager.go:187 index-store=boltdb-shipper-2020-10-24 msg="handing over indexes to shipper"
+level=info ts=2026-02-05T07:51:21.741721593Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
+level=info ts=2026-02-05T07:51:21.74175681Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
+level=info ts=2026-02-05T07:51:51.742059181Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
+level=info ts=2026-02-05T07:51:51.742085068Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
+level=info ts=2026-02-05T07:52:21.720386477Z caller=table_manager.go:136 index-store=boltdb-shipper-2020-10-24 msg="uploading tables"
+level=info ts=2026-02-05T07:52:21.720365807Z caller=table_manager.go:187 index-store=boltdb-shipper-2020-10-24 msg="handing over indexes to shipper"
+level=info ts=2026-02-05T07:52:21.741706199Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
+level=info ts=2026-02-05T07:52:21.741787333Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
+level=info ts=2026-02-05T07:52:51.741752946Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
+level=info ts=2026-02-05T07:52:51.741822986Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
+level=info ts=2026-02-05T07:53:21.720182923Z caller=table_manager.go:187 index-store=boltdb-shipper-2020-10-24 msg="handing over indexes to shipper"
+level=info ts=2026-02-05T07:53:21.720195079Z caller=table_manager.go:136 index-store=boltdb-shipper-2020-10-24 msg="uploading tables"
+level=info ts=2026-02-05T07:53:21.741752708Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
+level=info ts=2026-02-05T07:53:21.741792464Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
+level=info ts=2026-02-05T07:53:51.742029309Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
+level=info ts=2026-02-05T07:53:51.742153508Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
+level=info ts=2026-02-05T07:54:21.72085621Z caller=table_manager.go:239 index-store=boltdb-shipper-2020-10-24 msg="syncing tables"
+level=info ts=2026-02-05T07:54:21.720839725Z caller=table_manager.go:187 index-store=boltdb-shipper-2020-10-24 msg="handing over indexes to shipper"
+level=info ts=2026-02-05T07:54:21.720874729Z caller=table_manager.go:136 index-store=boltdb-shipper-2020-10-24 msg="uploading tables"
+level=info ts=2026-02-05T07:54:21.720887845Z caller=table_manager.go:300 index-store=boltdb-shipper-2020-10-24 msg="query readiness setup completed" duration=1.597µs distinct_users_len=0 distinct_users=
+level=info ts=2026-02-05T07:54:21.741568086Z caller=checkpoint.go:612 msg="starting checkpoint"
+level=info ts=2026-02-05T07:54:21.74171084Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
+level=info ts=2026-02-05T07:54:21.741751466Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
+level=info ts=2026-02-05T07:54:21.741933178Z caller=checkpoint.go:337 msg="attempting checkpoint for" dir=/var/loki/wal/checkpoint.000000
+level=info ts=2026-02-05T07:54:21.74460767Z caller=checkpoint.go:499 msg="atomic checkpoint finished" old=/var/loki/wal/checkpoint.000000.tmp new=/var/loki/wal/checkpoint.000000
+level=info ts=2026-02-05T07:54:51.742390195Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
+level=info ts=2026-02-05T07:54:51.742418901Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
+level=info ts=2026-02-05T07:55:21.720727442Z caller=table_manager.go:187 index-store=boltdb-shipper-2020-10-24 msg="handing over indexes to shipper"
+level=info ts=2026-02-05T07:55:21.720722541Z caller=table_manager.go:136 index-store=boltdb-shipper-2020-10-24 msg="uploading tables"
+level=info ts=2026-02-05T07:55:21.742144415Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
+level=info ts=2026-02-05T07:55:21.742162246Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
+level=info ts=2026-02-05T07:55:51.74248763Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
+level=info ts=2026-02-05T07:55:51.742535393Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
+level=info ts=2026-02-05T07:56:21.720102098Z caller=table_manager.go:187 index-store=boltdb-shipper-2020-10-24 msg="handing over indexes to shipper"
+level=info ts=2026-02-05T07:56:21.72010774Z caller=table_manager.go:136 index-store=boltdb-shipper-2020-10-24 msg="uploading tables"
+level=info ts=2026-02-05T07:56:21.742532453Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
+level=info ts=2026-02-05T07:56:21.742550338Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
+level=info ts=2026-02-05T07:56:51.741715716Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
+level=info ts=2026-02-05T07:56:51.741745887Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
+level=info ts=2026-02-05T07:57:21.720202586Z caller=table_manager.go:136 index-store=boltdb-shipper-2020-10-24 msg="uploading tables"
+level=info ts=2026-02-05T07:57:21.720195148Z caller=table_manager.go:187 index-store=boltdb-shipper-2020-10-24 msg="handing over indexes to shipper"
+level=info ts=2026-02-05T07:57:21.741779109Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
+level=info ts=2026-02-05T07:57:21.741797329Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
+level=info ts=2026-02-05T07:57:51.742411354Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
+level=info ts=2026-02-05T07:57:51.742476809Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
+level=info ts=2026-02-05T07:58:21.720777097Z caller=table_manager.go:187 index-store=boltdb-shipper-2020-10-24 msg="handing over indexes to shipper"
+level=info ts=2026-02-05T07:58:21.720793115Z caller=table_manager.go:136 index-store=boltdb-shipper-2020-10-24 msg="uploading tables"
+level=info ts=2026-02-05T07:58:21.742328008Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
+level=info ts=2026-02-05T07:58:21.742355703Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
+level=info ts=2026-02-05T07:58:51.741845126Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
+level=info ts=2026-02-05T07:58:51.741886931Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
+level=info ts=2026-02-05T07:59:21.720569066Z caller=table_manager.go:136 index-store=boltdb-shipper-2020-10-24 msg="uploading tables"
+level=info ts=2026-02-05T07:59:21.7205668Z caller=table_manager.go:239 index-store=boltdb-shipper-2020-10-24 msg="syncing tables"
+level=info ts=2026-02-05T07:59:21.720578962Z caller=table_manager.go:187 index-store=boltdb-shipper-2020-10-24 msg="handing over indexes to shipper"
+level=info ts=2026-02-05T07:59:21.720590919Z caller=table_manager.go:300 index-store=boltdb-shipper-2020-10-24 msg="query readiness setup completed" duration=1.125µs distinct_users_len=0 distinct_users=
+level=info ts=2026-02-05T07:59:21.741825036Z caller=checkpoint.go:612 msg="starting checkpoint"
+level=info ts=2026-02-05T07:59:21.74191662Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
+level=info ts=2026-02-05T07:59:21.741924819Z caller=checkpoint.go:337 msg="attempting checkpoint for" dir=/var/loki/wal/checkpoint.000001
+level=info ts=2026-02-05T07:59:21.741929187Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
+level=info ts=2026-02-05T07:59:21.748074543Z caller=checkpoint.go:499 msg="atomic checkpoint finished" old=/var/loki/wal/checkpoint.000001.tmp new=/var/loki/wal/checkpoint.000001
+level=info ts=2026-02-05T07:59:27.049422709Z caller=tables_manager.go:76 msg="compactor startup delay completed"
+level=info ts=2026-02-05T07:59:27.049562044Z caller=tables_manager.go:145 msg="compactor started"
+level=info ts=2026-02-05T07:59:51.741716311Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
+level=info ts=2026-02-05T07:59:51.741732206Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
+level=info ts=2026-02-05T08:00:21.720699695Z caller=table_manager.go:187 index-store=boltdb-shipper-2020-10-24 msg="handing over indexes to shipper"
+level=info ts=2026-02-05T08:00:21.720714179Z caller=table_manager.go:136 index-store=boltdb-shipper-2020-10-24 msg="uploading tables"
+level=info ts=2026-02-05T08:00:21.742204009Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
+level=info ts=2026-02-05T08:00:21.742226859Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
+level=info ts=2026-02-05T08:00:51.742555225Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
+level=info ts=2026-02-05T08:00:51.742576247Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
+level=info ts=2026-02-05T08:01:21.720721189Z caller=table_manager.go:187 index-store=boltdb-shipper-2020-10-24 msg="handing over indexes to shipper"
+level=info ts=2026-02-05T08:01:21.720793139Z caller=table_manager.go:136 index-store=boltdb-shipper-2020-10-24 msg="uploading tables"
+level=info ts=2026-02-05T08:01:21.742468406Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
+level=info ts=2026-02-05T08:01:21.742491565Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
+level=info ts=2026-02-05T08:01:51.74207467Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
+level=info ts=2026-02-05T08:01:51.742153366Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
+level=info ts=2026-02-05T08:02:21.720626243Z caller=table_manager.go:136 index-store=boltdb-shipper-2020-10-24 msg="uploading tables"
+level=info ts=2026-02-05T08:02:21.720683675Z caller=table_manager.go:187 index-store=boltdb-shipper-2020-10-24 msg="handing over indexes to shipper"
+level=info ts=2026-02-05T08:02:21.742240837Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
+level=info ts=2026-02-05T08:02:21.742281113Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
+level=info ts=2026-02-05T08:02:51.742097591Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
+level=info ts=2026-02-05T08:02:51.742123283Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
+level=info ts=2026-02-05T08:03:21.720706792Z caller=table_manager.go:136 index-store=boltdb-shipper-2020-10-24 msg="uploading tables"
+level=info ts=2026-02-05T08:03:21.720781909Z caller=table_manager.go:187 index-store=boltdb-shipper-2020-10-24 msg="handing over indexes to shipper"
+level=info ts=2026-02-05T08:03:21.742338722Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
+level=info ts=2026-02-05T08:03:21.742356225Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
+level=info ts=2026-02-05T08:03:51.742050735Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
+level=info ts=2026-02-05T08:03:51.742066547Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
+level=info ts=2026-02-05T08:04:21.72039174Z caller=table_manager.go:187 index-store=boltdb-shipper-2020-10-24 msg="handing over indexes to shipper"
+level=info ts=2026-02-05T08:04:21.720383416Z caller=table_manager.go:136 index-store=boltdb-shipper-2020-10-24 msg="uploading tables"
+level=info ts=2026-02-05T08:04:21.720399052Z caller=table_manager.go:239 index-store=boltdb-shipper-2020-10-24 msg="syncing tables"
+level=info ts=2026-02-05T08:04:21.720420215Z caller=table_manager.go:300 index-store=boltdb-shipper-2020-10-24 msg="query readiness setup completed" duration=1.154µs distinct_users_len=0 distinct_users=
+level=info ts=2026-02-05T08:04:21.741652445Z caller=checkpoint.go:612 msg="starting checkpoint"
+level=info ts=2026-02-05T08:04:21.741711239Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
+level=info ts=2026-02-05T08:04:21.741736965Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
+level=info ts=2026-02-05T08:04:21.74177076Z caller=checkpoint.go:337 msg="attempting checkpoint for" dir=/var/loki/wal/checkpoint.000002
+level=info ts=2026-02-05T08:04:21.747608229Z caller=checkpoint.go:499 msg="atomic checkpoint finished" old=/var/loki/wal/checkpoint.000002.tmp new=/var/loki/wal/checkpoint.000002
+level=info ts=2026-02-05T08:04:51.742105417Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
+level=info ts=2026-02-05T08:04:51.742137395Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
+level=info ts=2026-02-05T08:05:21.719939487Z caller=table_manager.go:136 index-store=boltdb-shipper-2020-10-24 msg="uploading tables"
+level=info ts=2026-02-05T08:05:21.721049942Z caller=table_manager.go:187 index-store=boltdb-shipper-2020-10-24 msg="handing over indexes to shipper"
+level=info ts=2026-02-05T08:05:21.742505412Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
+level=info ts=2026-02-05T08:05:21.742525344Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
+level=info ts=2026-02-05T08:05:51.741737556Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
+level=info ts=2026-02-05T08:05:51.741755839Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
+level=info ts=2026-02-05T08:06:21.720465268Z caller=table_manager.go:187 index-store=boltdb-shipper-2020-10-24 msg="handing over indexes to shipper"
+level=info ts=2026-02-05T08:06:21.720508384Z caller=table_manager.go:136 index-store=boltdb-shipper-2020-10-24 msg="uploading tables"
+level=info ts=2026-02-05T08:06:21.742015181Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
+level=info ts=2026-02-05T08:06:21.74204039Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
+level=info ts=2026-02-05T08:06:39.743188901Z caller=signals.go:62 msg="=== received SIGINT/SIGTERM ===\n*** exiting"
+level=info ts=2026-02-05T08:06:39.743338248Z caller=module_service.go:120 msg="module stopped" module=rule-evaluator
+level=info ts=2026-02-05T08:06:39.743353344Z caller=basic_lifecycler.go:262 msg="ring lifecycler is shutting down" ring=compactor
+level=info ts=2026-02-05T08:06:39.743356343Z caller=compactor.go:442 msg="compactor exiting"
+level=info ts=2026-02-05T08:06:39.743465095Z caller=basic_lifecycler.go:432 msg="unregistering instance from ring" ring=compactor
+level=error ts=2026-02-05T08:06:39.743485182Z caller=scheduler_processor.go:110 component=querier msg="error processing requests from scheduler" err="rpc error: code = Canceled desc = context canceled" addr=127.0.0.1:9096
+level=info ts=2026-02-05T08:06:39.743488557Z caller=basic_lifecycler.go:262 component=distributor msg="ring lifecycler is shutting down" ring=distributor
+level=error ts=2026-02-05T08:06:39.743513241Z caller=scheduler_processor.go:110 component=querier msg="error processing requests from scheduler" err="rpc error: code = Canceled desc = context canceled" addr=127.0.0.1:9096
+level=error ts=2026-02-05T08:06:39.743525543Z caller=scheduler_processor.go:110 component=querier msg="error processing requests from scheduler" err="rpc error: code = Canceled desc = context canceled" addr=127.0.0.1:9096
+level=error ts=2026-02-05T08:06:39.743535929Z caller=scheduler_processor.go:110 component=querier msg="error processing requests from scheduler" err="rpc error: code = Canceled desc = context canceled" addr=127.0.0.1:9096
+level=info ts=2026-02-05T08:06:39.743542723Z caller=basic_lifecycler.go:302 msg="instance removed from the ring" ring=compactor
+level=info ts=2026-02-05T08:06:39.743562139Z caller=module_service.go:120 msg="module stopped" module=compactor
+level=info ts=2026-02-05T08:06:39.743590528Z caller=basic_lifecycler.go:432 component=distributor msg="unregistering instance from ring" ring=distributor
+level=info ts=2026-02-05T08:06:39.743584738Z caller=wal.go:146 msg=stopped component=wal
+level=info ts=2026-02-05T08:06:39.743623871Z caller=lifecycler.go:606 component=ingester msg="lifecycler loop() exited gracefully" ring=ingester
+level=info ts=2026-02-05T08:06:39.743643422Z caller=basic_lifecycler.go:302 component=distributor msg="instance removed from the ring" ring=distributor
+level=info ts=2026-02-05T08:06:39.743640729Z caller=lifecycler.go:990 component=ingester msg="changing instance state from" old_state=ACTIVE new_state=LEAVING ring=ingester
+level=info ts=2026-02-05T08:06:39.74366465Z caller=module_service.go:120 msg="module stopped" module=distributor
+level=info ts=2026-02-05T08:06:39.743691694Z caller=lifecycler.go:1076 component=ingester msg="transfers are disabled"
+level=info ts=2026-02-05T08:06:39.743704511Z caller=lifecycler.go:1093 component=ingester msg="lifecycler entering final sleep before shutdown" final_sleep=0s
+level=info ts=2026-02-05T08:06:39.743741435Z caller=lifecycler.go:658 component=ingester msg="instance removed from the KV store" ring=ingester
+level=info ts=2026-02-05T08:06:39.743805648Z caller=module_service.go:120 msg="module stopped" module=ingester
+level=info ts=2026-02-05T08:06:39.74394609Z caller=module_service.go:120 msg="module stopped" module=querier
+level=info ts=2026-02-05T08:06:39.743968877Z caller=module_service.go:120 msg="module stopped" module=ingester-querier
+level=info ts=2026-02-05T08:06:39.743987794Z caller=table_manager.go:116 index-store=boltdb-shipper-2020-10-24 msg="stopping table manager"
+level=info ts=2026-02-05T08:06:39.744013011Z caller=table_manager.go:187 index-store=boltdb-shipper-2020-10-24 msg="handing over indexes to shipper"
+level=info ts=2026-02-05T08:06:39.74401782Z caller=table_manager.go:77 index-store=boltdb-shipper-2020-10-24 msg="stopping table manager"
+level=info ts=2026-02-05T08:06:39.74402433Z caller=table_manager.go:136 index-store=boltdb-shipper-2020-10-24 msg="uploading tables"
+level=info ts=2026-02-05T08:06:39.744032677Z caller=module_service.go:120 msg="module stopped" module=store
+level=info ts=2026-02-05T08:06:40.244527856Z caller=module_service.go:120 msg="module stopped" module=query-frontend
+level=info ts=2026-02-05T08:06:40.244559719Z caller=module_service.go:120 msg="module stopped" module=query-frontend-tripperware
+level=info ts=2026-02-05T08:06:40.244566628Z caller=module_service.go:120 msg="module stopped" module=query-scheduler
+level=info ts=2026-02-05T08:06:40.244591991Z caller=basic_lifecycler.go:262 msg="ring lifecycler is shutting down" ring=scheduler
+level=info ts=2026-02-05T08:06:40.244653046Z caller=module_service.go:120 msg="module stopped" module=analytics
+level=info ts=2026-02-05T08:06:40.244682736Z caller=module_service.go:120 msg="module stopped" module=cache-generation-loader
+level=info ts=2026-02-05T08:06:40.244702516Z caller=basic_lifecycler.go:432 msg="unregistering instance from ring" ring=scheduler
+level=info ts=2026-02-05T08:06:40.244734468Z caller=basic_lifecycler.go:302 msg="instance removed from the ring" ring=scheduler
+level=info ts=2026-02-05T08:06:40.244750693Z caller=module_service.go:120 msg="module stopped" module=query-scheduler-ring
+level=info ts=2026-02-05T08:06:40.323100518Z caller=module_service.go:120 msg="module stopped" module=ring
+level=info ts=2026-02-05T08:06:40.323136809Z caller=module_service.go:120 msg="module stopped" module=memberlist-kv
+level=info ts=2026-02-05T08:06:40.323529206Z caller=modules.go:2369 msg="server stopped"
+level=info ts=2026-02-05T08:06:40.323544122Z caller=module_service.go:120 msg="module stopped" module=server
+level=info ts=2026-02-05T08:06:40.323556361Z caller=loki.go:599 msg="Loki stopped" running_time=17m18.694401335s
+failed parsing config: /etc/loki/local-config.yaml: yaml: unmarshal errors:
+  line 41: field check_ready_interval not found in type loki.ConfigWrapper. Use `-config.expand-env=true` flag if you want to expand environment variables in your config file
+failed parsing config: /etc/loki/local-config.yaml: yaml: unmarshal errors:
+  line 41: field check_ready_interval not found in type loki.ConfigWrapper. Use `-config.expand-env=true` flag if you want to expand environment variables in your config file
+failed parsing config: /etc/loki/local-config.yaml: yaml: unmarshal errors:
+  line 41: field check_ready_interval not found in type loki.ConfigWrapper. Use `-config.expand-env=true` flag if you want to expand environment variables in your config file
+failed parsing config: /etc/loki/local-config.yaml: yaml: unmarshal errors:
+  line 41: field check_ready_interval not found in type loki.ConfigWrapper. Use `-config.expand-env=true` flag if you want to expand environment variables in your config file
+failed parsing config: /etc/loki/local-config.yaml: yaml: unmarshal errors:
+  line 41: field check_ready_interval not found in type loki.ConfigWrapper. Use `-config.expand-env=true` flag if you want to expand environment variables in your config file
+failed parsing config: /etc/loki/local-config.yaml: yaml: unmarshal errors:
+  line 41: field check_ready_interval not found in type loki.ConfigWrapper. Use `-config.expand-env=true` flag if you want to expand environment variables in your config file
+failed parsing config: /etc/loki/local-config.yaml: yaml: unmarshal errors:
+  line 41: field check_ready_interval not found in type loki.ConfigWrapper. Use `-config.expand-env=true` flag if you want to expand environment variables in your config file
+failed parsing config: /etc/loki/local-config.yaml: yaml: unmarshal errors:
+  line 41: field check_ready_interval not found in type loki.ConfigWrapper. Use `-config.expand-env=true` flag if you want to expand environment variables in your config file
+failed parsing config: /etc/loki/local-config.yaml: yaml: unmarshal errors:
+  line 41: field check_ready_interval not found in type loki.ConfigWrapper. Use `-config.expand-env=true` flag if you want to expand environment variables in your config file
+failed parsing config: /etc/loki/local-config.yaml: yaml: unmarshal errors:
+  line 41: field check_ready_interval not found in type loki.ConfigWrapper. Use `-config.expand-env=true` flag if you want to expand environment variables in your config file
+level=error ts=2026-02-05T08:08:25.029318334Z caller=main.go:73 msg="validating config" err="MULTIPLE CONFIG ERRORS FOUND, PLEASE READ CAREFULLY\nCONFIG ERROR: schema v13 is required to store Structured Metadata and use native OTLP ingestion, your schema version is v11. Set `allow_structured_metadata: false` in the `limits_config` section or set the command line argument `-validation.allow-structured-metadata=false` and restart Loki. Then proceed to update to schema v13 or newer before re-enabling this config, search for 'Storage Schema' in the docs for the schema update procedure\nCONFIG ERROR: `tsdb` index type is required to store Structured Metadata and use native OTLP ingestion, your index type is `boltdb-shipper` (defined in the `store` parameter of the schema_config). Set `allow_structured_metadata: false` in the `limits_config` section or set the command line argument `-validation.allow-structured-metadata=false` and restart Loki. Then proceed to update the schema to use index type `tsdb` before re-enabling this config, search for 'Storage Schema' in the docs for the schema update procedure"
+level=error ts=2026-02-05T08:08:32.73840406Z caller=main.go:73 msg="validating config" err="MULTIPLE CONFIG ERRORS FOUND, PLEASE READ CAREFULLY\nCONFIG ERROR: schema v13 is required to store Structured Metadata and use native OTLP ingestion, your schema version is v11. Set `allow_structured_metadata: false` in the `limits_config` section or set the command line argument `-validation.allow-structured-metadata=false` and restart Loki. Then proceed to update to schema v13 or newer before re-enabling this config, search for 'Storage Schema' in the docs for the schema update procedure\nCONFIG ERROR: `tsdb` index type is required to store Structured Metadata and use native OTLP ingestion, your index type is `boltdb-shipper` (defined in the `store` parameter of the schema_config). Set `allow_structured_metadata: false` in the `limits_config` section or set the command line argument `-validation.allow-structured-metadata=false` and restart Loki. Then proceed to update the schema to use index type `tsdb` before re-enabling this config, search for 'Storage Schema' in the docs for the schema update procedure"
+level=error ts=2026-02-05T08:08:33.072530708Z caller=main.go:73 msg="validating config" err="MULTIPLE CONFIG ERRORS FOUND, PLEASE READ CAREFULLY\nCONFIG ERROR: schema v13 is required to store Structured Metadata and use native OTLP ingestion, your schema version is v11. Set `allow_structured_metadata: false` in the `limits_config` section or set the command line argument `-validation.allow-structured-metadata=false` and restart Loki. Then proceed to update to schema v13 or newer before re-enabling this config, search for 'Storage Schema' in the docs for the schema update procedure\nCONFIG ERROR: `tsdb` index type is required to store Structured Metadata and use native OTLP ingestion, your index type is `boltdb-shipper` (defined in the `store` parameter of the schema_config). Set `allow_structured_metadata: false` in the `limits_config` section or set the command line argument `-validation.allow-structured-metadata=false` and restart Loki. Then proceed to update the schema to use index type `tsdb` before re-enabling this config, search for 'Storage Schema' in the docs for the schema update procedure"
+level=error ts=2026-02-05T08:08:33.511207354Z caller=main.go:73 msg="validating config" err="MULTIPLE CONFIG ERRORS FOUND, PLEASE READ CAREFULLY\nCONFIG ERROR: schema v13 is required to store Structured Metadata and use native OTLP ingestion, your schema version is v11. Set `allow_structured_metadata: false` in the `limits_config` section or set the command line argument `-validation.allow-structured-metadata=false` and restart Loki. Then proceed to update to schema v13 or newer before re-enabling this config, search for 'Storage Schema' in the docs for the schema update procedure\nCONFIG ERROR: `tsdb` index type is required to store Structured Metadata and use native OTLP ingestion, your index type is `boltdb-shipper` (defined in the `store` parameter of the schema_config). Set `allow_structured_metadata: false` in the `limits_config` section or set the command line argument `-validation.allow-structured-metadata=false` and restart Loki. Then proceed to update the schema to use index type `tsdb` before re-enabling this config, search for 'Storage Schema' in the docs for the schema update procedure"
+level=error ts=2026-02-05T08:08:34.128062189Z caller=main.go:73 msg="validating config" err="MULTIPLE CONFIG ERRORS FOUND, PLEASE READ CAREFULLY\nCONFIG ERROR: schema v13 is required to store Structured Metadata and use native OTLP ingestion, your schema version is v11. Set `allow_structured_metadata: false` in the `limits_config` section or set the command line argument `-validation.allow-structured-metadata=false` and restart Loki. Then proceed to update to schema v13 or newer before re-enabling this config, search for 'Storage Schema' in the docs for the schema update procedure\nCONFIG ERROR: `tsdb` index type is required to store Structured Metadata and use native OTLP ingestion, your index type is `boltdb-shipper` (defined in the `store` parameter of the schema_config). Set `allow_structured_metadata: false` in the `limits_config` section or set the command line argument `-validation.allow-structured-metadata=false` and restart Loki. Then proceed to update the schema to use index type `tsdb` before re-enabling this config, search for 'Storage Schema' in the docs for the schema update procedure"
+level=error ts=2026-02-05T08:08:35.140911012Z caller=main.go:73 msg="validating config" err="MULTIPLE CONFIG ERRORS FOUND, PLEASE READ CAREFULLY\nCONFIG ERROR: schema v13 is required to store Structured Metadata and use native OTLP ingestion, your schema version is v11. Set `allow_structured_metadata: false` in the `limits_config` section or set the command line argument `-validation.allow-structured-metadata=false` and restart Loki. Then proceed to update to schema v13 or newer before re-enabling this config, search for 'Storage Schema' in the docs for the schema update procedure\nCONFIG ERROR: `tsdb` index type is required to store Structured Metadata and use native OTLP ingestion, your index type is `boltdb-shipper` (defined in the `store` parameter of the schema_config). Set `allow_structured_metadata: false` in the `limits_config` section or set the command line argument `-validation.allow-structured-metadata=false` and restart Loki. Then proceed to update the schema to use index type `tsdb` before re-enabling this config, search for 'Storage Schema' in the docs for the schema update procedure"
+level=error ts=2026-02-05T08:08:36.953876018Z caller=main.go:73 msg="validating config" err="MULTIPLE CONFIG ERRORS FOUND, PLEASE READ CAREFULLY\nCONFIG ERROR: schema v13 is required to store Structured Metadata and use native OTLP ingestion, your schema version is v11. Set `allow_structured_metadata: false` in the `limits_config` section or set the command line argument `-validation.allow-structured-metadata=false` and restart Loki. Then proceed to update to schema v13 or newer before re-enabling this config, search for 'Storage Schema' in the docs for the schema update procedure\nCONFIG ERROR: `tsdb` index type is required to store Structured Metadata and use native OTLP ingestion, your index type is `boltdb-shipper` (defined in the `store` parameter of the schema_config). Set `allow_structured_metadata: false` in the `limits_config` section or set the command line argument `-validation.allow-structured-metadata=false` and restart Loki. Then proceed to update the schema to use index type `tsdb` before re-enabling this config, search for 'Storage Schema' in the docs for the schema update procedure"
+level=error ts=2026-02-05T08:08:40.368718148Z caller=main.go:73 msg="validating config" err="MULTIPLE CONFIG ERRORS FOUND, PLEASE READ CAREFULLY\nCONFIG ERROR: schema v13 is required to store Structured Metadata and use native OTLP ingestion, your schema version is v11. Set `allow_structured_metadata: false` in the `limits_config` section or set the command line argument `-validation.allow-structured-metadata=false` and restart Loki. Then proceed to update to schema v13 or newer before re-enabling this config, search for 'Storage Schema' in the docs for the schema update procedure\nCONFIG ERROR: `tsdb` index type is required to store Structured Metadata and use native OTLP ingestion, your index type is `boltdb-shipper` (defined in the `store` parameter of the schema_config). Set `allow_structured_metadata: false` in the `limits_config` section or set the command line argument `-validation.allow-structured-metadata=false` and restart Loki. Then proceed to update the schema to use index type `tsdb` before re-enabling this config, search for 'Storage Schema' in the docs for the schema update procedure"
+level=error ts=2026-02-05T08:08:46.986321876Z caller=main.go:73 msg="validating config" err="MULTIPLE CONFIG ERRORS FOUND, PLEASE READ CAREFULLY\nCONFIG ERROR: schema v13 is required to store Structured Metadata and use native OTLP ingestion, your schema version is v11. Set `allow_structured_metadata: false` in the `limits_config` section or set the command line argument `-validation.allow-structured-metadata=false` and restart Loki. Then proceed to update to schema v13 or newer before re-enabling this config, search for 'Storage Schema' in the docs for the schema update procedure\nCONFIG ERROR: `tsdb` index type is required to store Structured Metadata and use native OTLP ingestion, your index type is `boltdb-shipper` (defined in the `store` parameter of the schema_config). Set `allow_structured_metadata: false` in the `limits_config` section or set the command line argument `-validation.allow-structured-metadata=false` and restart Loki. Then proceed to update the schema to use index type `tsdb` before re-enabling this config, search for 'Storage Schema' in the docs for the schema update procedure"
+level=error ts=2026-02-05T08:08:59.989880791Z caller=main.go:73 msg="validating config" err="MULTIPLE CONFIG ERRORS FOUND, PLEASE READ CAREFULLY\nCONFIG ERROR: schema v13 is required to store Structured Metadata and use native OTLP ingestion, your schema version is v11. Set `allow_structured_metadata: false` in the `limits_config` section or set the command line argument `-validation.allow-structured-metadata=false` and restart Loki. Then proceed to update to schema v13 or newer before re-enabling this config, search for 'Storage Schema' in the docs for the schema update procedure\nCONFIG ERROR: `tsdb` index type is required to store Structured Metadata and use native OTLP ingestion, your index type is `boltdb-shipper` (defined in the `store` parameter of the schema_config). Set `allow_structured_metadata: false` in the `limits_config` section or set the command line argument `-validation.allow-structured-metadata=false` and restart Loki. Then proceed to update the schema to use index type `tsdb` before re-enabling this config, search for 'Storage Schema' in the docs for the schema update procedure"
+level=error ts=2026-02-05T08:09:25.789103257Z caller=main.go:73 msg="validating config" err="MULTIPLE CONFIG ERRORS FOUND, PLEASE READ CAREFULLY\nCONFIG ERROR: schema v13 is required to store Structured Metadata and use native OTLP ingestion, your schema version is v11. Set `allow_structured_metadata: false` in the `limits_config` section or set the command line argument `-validation.allow-structured-metadata=false` and restart Loki. Then proceed to update to schema v13 or newer before re-enabling this config, search for 'Storage Schema' in the docs for the schema update procedure\nCONFIG ERROR: `tsdb` index type is required to store Structured Metadata and use native OTLP ingestion, your index type is `boltdb-shipper` (defined in the `store` parameter of the schema_config). Set `allow_structured_metadata: false` in the `limits_config` section or set the command line argument `-validation.allow-structured-metadata=false` and restart Loki. Then proceed to update the schema to use index type `tsdb` before re-enabling this config, search for 'Storage Schema' in the docs for the schema update procedure"
+level=error ts=2026-02-05T08:10:17.210992019Z caller=main.go:73 msg="validating config" err="MULTIPLE CONFIG ERRORS FOUND, PLEASE READ CAREFULLY\nCONFIG ERROR: schema v13 is required to store Structured Metadata and use native OTLP ingestion, your schema version is v11. Set `allow_structured_metadata: false` in the `limits_config` section or set the command line argument `-validation.allow-structured-metadata=false` and restart Loki. Then proceed to update to schema v13 or newer before re-enabling this config, search for 'Storage Schema' in the docs for the schema update procedure\nCONFIG ERROR: `tsdb` index type is required to store Structured Metadata and use native OTLP ingestion, your index type is `boltdb-shipper` (defined in the `store` parameter of the schema_config). Set `allow_structured_metadata: false` in the `limits_config` section or set the command line argument `-validation.allow-structured-metadata=false` and restart Loki. Then proceed to update the schema to use index type `tsdb` before re-enabling this config, search for 'Storage Schema' in the docs for the schema update procedure"
