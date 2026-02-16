@@ -18,3 +18,7 @@ blocks_storage:
 
 compactor:
   data_dir: /tmp/mimir/compactor
+
+ingester:
+  ring:
+    replication_factor: 1

@@ -42,6 +42,7 @@ services:
     network_mode: host
     volumes:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - ./alert_rules.yml:/etc/prometheus/alert_rules.yml:ro
     restart: unless-stopped
     extra_hosts:
       - "host.docker.internal:host-gateway"
@@ -49,6 +50,25 @@ services:
   node-exporter:
     container_name: node-exporter
     image: prom/node-exporter:v1.9.1
+    network_mode: host
+    restart: unless-stopped
+
+  alertmanager:
+    container_name: alertmanager
+    image: prom/alertmanager:v0.28.1
+    network_mode: host
+    depends_on:
+      - alert-webhook
+    volumes:
+      - ./alertmanager-config.yml:/etc/alertmanager/config.yml:ro
+    command:
+      - '--config.file=/etc/alertmanager/config.yml'
+      - '--storage.path=/alertmanager'
+    restart: unless-stopped
+
+  alert-webhook:
+    build: ./alert-webhook
+    container_name: alert-webhook
     network_mode: host
     restart: unless-stopped
 
@@ -85,8 +105,10 @@ services:
     init: true
     network_mode: host
     pid: host
+    volumes:
+      - ./beyla-config.yaml:/etc/beyla-config.yaml
     environment:
-      BEYLA_EXECUTABLE_NAME: "grafana"
+      BEYLA_CONFIG_PATH: "/etc/beyla-config.yaml"
       BEYLA_PROMETHEUS_PORT: "8999"
       OTEL_EXPORTER_OTLP_ENDPOINT: "http://localhost:4318"
       OTEL_EXPORTER_OTLP_PROTOCOL: "http/protobuf"
@@ -96,7 +118,6 @@ services:
       BEYLA_LOG_LEVEL: "DEBUG"
       BEYLA_PROFILING_REPORTING_ENABLED: "true"
       BEYLA_PROFILING_REPORTING_ENDPOINT: "http://localhost:4040"
-      BEYLA_SERVICE_NAME: "system_auto_trace"
     restart: unless-stopped
 
   otel-collector:
@@ -111,6 +132,14 @@ services:
       - loki
       - mimir
       - tempo
+
+  my-python-app:
+    build: ./my_otel_app
+    container_name: my-python-app
+    network_mode: host
+    restart: unless-stopped
+    depends_on:
+      - otel-collector
 
   k6:
     container_name: k6

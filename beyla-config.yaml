@@ -1,0 +1,6 @@
+discovery:
+  services:
+    - name: my-python-app
+      open_ports: 8000
+    - name: grafana-server
+      open_ports: 3000,3005
