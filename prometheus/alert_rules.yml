@@ -1,0 +1,68 @@
+groups:
+  - name: service_health
+    interval: 30s
+    rules:
+      - alert: ServiceDown
+        expr: up == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Service {{ $labels.job }} is down"
+          description: "{{ $labels.job }} on {{ $labels.instance }} has been down for more than 1 minute."
+
+  - name: resource_usage
+    interval: 30s
+    rules:
+      - alert: HighCPUUsage
+        expr: 100 - (avg by(instance) (rate(node_cpu_seconds_total{mode="idle"}[5m])) * 100) > 80
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High CPU usage detected"
+          description: "CPU usage is above 80% on {{ $labels.instance }} (current value: {{ $value }}%)"
+
+      - alert: HighMemoryUsage
+        expr: (1 - (node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes)) * 100 > 85
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High memory usage detected"
+          description: "Memory usage is above 85% on {{ $labels.instance }} (current value: {{ $value }}%)"
+
+      - alert: DiskSpaceLow
+        expr: (1 - (node_filesystem_avail_bytes{mountpoint="/"} / node_filesystem_size_bytes{mountpoint="/"})) * 100 > 80
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Disk space running low"
+          description: "Disk usage is above 80% on {{ $labels.instance }} (current value: {{ $value }}%)"
+
+  - name: application_performance
+    interval: 30s
+    rules:
+      # Beyla exports http_server_request_duration_seconds (histogram)
+      - alert: PythonAppSlowResponse
+        expr: histogram_quantile(0.95, rate(http_server_request_duration_seconds_bucket{service_name="my-python-app"}[5m])) > 2
+        for: 3m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Python app experiencing slow responses"
+          description: "95th percentile response time is above 2 seconds for my-python-app (current: {{ $value }}s)"
+
+      # Error rate from Beyla histogram count by http_response_status_code
+      - alert: HighErrorRate
+        expr: |
+          sum(rate(http_server_request_duration_seconds_count{http_response_status_code=~"5.."}[5m])) by (service_name)
+          /
+          sum(rate(http_server_request_duration_seconds_count[5m])) by (service_name) > 0.05
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "High error rate detected"
+          description: "5xx error rate is above 5% for {{ $labels.service_name }}"
