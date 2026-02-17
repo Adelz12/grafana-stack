@@ -5,35 +5,37 @@ receivers:
         endpoint: 0.0.0.0:4317
       http:
         endpoint: 0.0.0.0:4318
+  # إضافة الجزء الخاص بسحب بيانات Node Exporter
   prometheus:
     config:
       scrape_configs:
         - job_name: 'node-exporter'
           scrape_interval: 10s
           static_configs:
-            - targets: ['node-exporter:9100']
+            - targets: ['node-exporter:9100'] # نستخدم اسم الحاوية وليس localhost
 
 processors:
   batch:
 
 exporters:
+  # تغيير localhost إلى أسماء الحاويات في Docker
   prometheusremotewrite:
     endpoint: "http://mimir:9009/api/v1/push"
 
-  otlp_http/loki:
+  otlp_http/loki: # عدلت المسمى أيضاً لتجنب التنبيه (warning)
     endpoint: "http://loki:3100/otlp"
     tls:
       insecure: true
 
-  otlp_grpc/tempo:
-    endpoint: "tempo:4317"
+  otlp_grpc/tempo: # عدلت المسمى أيضاً لتجنب التنبيه (warning)
+    endpoint: "tempo:4317" # تأكد من المنفذ الصحيح لـ Tempo داخل الشبكة
     tls:
       insecure: true
 
 service:
   pipelines:
     metrics:
-      receivers: [otlp, prometheus]
+      receivers: [otlp, prometheus] # أضفنا prometheus هنا
       processors: [batch]
       exporters: [prometheusremotewrite]
     logs:
