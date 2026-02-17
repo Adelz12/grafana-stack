@@ -34,8 +34,8 @@ This platform provides 360-degree visibility across four pillars:
 ## 📢 Alerting
 
 The stack includes a complete alerting pipeline:
-*   **Prometheus** evaluates alert rules from `alert_rules.yml` (service health, resource usage, application performance).
-*   **Alertmanager** routes alerts to configured receivers (webhook, Slack, email, etc.).
+*   **Prometheus** evaluates alert rules from `prometheus/alert_rules.yml` (service health, resource usage, application performance).
+*   **Alertmanager** routes alerts to configured receivers (webhook, Slack, email, etc.) using `alertmanager/alertmanager-config.yml`.
 *   **alert-webhook** service receives and logs alerts for testing and debugging.
 
 **Quick Links:**
