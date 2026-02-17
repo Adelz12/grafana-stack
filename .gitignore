@@ -10,3 +10,9 @@ data/
 # Temporary files
 *.log
 tmp/
+
+# Python virtual environments
+venv/
+**/venv/
+__pycache__/
+*.pyc
