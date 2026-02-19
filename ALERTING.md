@@ -2,13 +2,12 @@
 
 ## ما الموجود
 
-- **Prometheus**: يقيّم قواعد التنبيه من `alert_rules.yml` ويرسل التنبيهات إلى Alertmanager على `localhost:9093`.
-- **Alertmanager**: يستقبل التنبيهات ويوجّهها إلى المستقبلات (حالياً webhook على المنفذ 5001).
-- **alert-webhook**: خدمة صغيرة تستقبل تنبيهات Alertmanager وتطبعها في الـ logs.
+- **Prometheus**: The "Brain." It evaluates rules from alert_rules.yml and sends alerts to Alertmanager at localhost:9093.
+- **Alertmanager**: The "Dispatcher." It handles, silences, and routes alerts to the correct destination (currently port 5001).
+- **alert-webhook**: The "Logger." A microservice that catches alerts and prints them to logs for easy debugging.
 
-## القواعد الحالية (`alert_rules.yml`)
+## Active Alerting Rules (`alert_rules.yml`)
 
-| المجموعة | التنبيه | الشرط |
 |----------|---------|--------|
 | service_health | ServiceDown | الـ target غير متاح لأكثر من دقيقة |
 | resource_usage | HighCPUUsage | استهلاك CPU > 80% لمدة 2 دقيقة |
